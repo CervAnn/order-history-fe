@@ -2,7 +2,6 @@ import React from 'react';
 import Order from '../Order/Order';
 
 const Container = ({orders}) => {
-    console.log("orders", orders)
     const displayOrders = orders.map(order => {
         return (
             <Order 

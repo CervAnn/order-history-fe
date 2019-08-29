@@ -27,7 +27,6 @@ class App extends Component {
           </div>
         </header>
         <div className='purchase-container'>
-          {console.log("hey", this.state)}
           <Container orders={this.state.orders} />
         </div>
       </div>
