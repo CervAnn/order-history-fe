@@ -1,7 +1,7 @@
 import React from 'react'
 import './Order.css'
 
-const Order = ({id, img, name, description, price}) => {
+const Order = ({id, img, name, description, price, deleteItem}) => {
     return (
         <div className="Order">
             <img src={img} alt="ordered item"/>
@@ -11,7 +11,7 @@ const Order = ({id, img, name, description, price}) => {
             </div>
             <div className="priceButton">
             <h2>{price}</h2>
-            <button>Remove From History</button>
+            <button onClick={() => deleteItem(id)}>Remove From History</button>
             </div>
         </div>
     )

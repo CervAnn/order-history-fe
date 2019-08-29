@@ -1,7 +1,7 @@
 import React from 'react';
 import Order from '../Order/Order';
 
-const Container = ({orders}) => {
+const Container = ({orders, deleteItem}) => {
     const displayOrders = orders.map(order => {
         return (
             <Order 
@@ -11,6 +11,7 @@ const Container = ({orders}) => {
             name={order.name}
             description={order.description}
             price={order.price}
+            deleteItem={deleteItem}
             />
         )
     })
