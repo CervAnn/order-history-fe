@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Container from '../Container/Container'
 import './App.css';
-import { get } from 'http';
 
 class App extends Component {
   constructor() {
@@ -12,11 +11,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/purchases')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .then(orders => this.setState({orders}))
-    console.log(this.state.orders)
+      fetch('http://localhost:3001/api/v1/purchases')
+      .then(response => response.json())
+      .then(orders => this.setState({orders}))
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -29,9 +27,8 @@ class App extends Component {
           </div>
         </header>
         <div className='purchase-container'>
-          {!this.state.orders && <h1>Loading...</h1>}
-          {this.state.orders && <Container orders={this.state.orders} />}
-          {/* <Container orders={this.state.orders} /> */}
+          {console.log("hey", this.state)}
+          <Container orders={this.state.orders} />
         </div>
       </div>
     );
