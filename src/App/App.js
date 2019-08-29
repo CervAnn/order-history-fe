@@ -17,6 +17,20 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
+  addIdea = (newItem) => {
+    let options = {
+      method: "POST",
+      body: JSON.stringify({orders: [...this.state.orders, newItem]}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    fetch('http://localhost:3001/api/v1/purchases', options)
+      .then(response => response.json())
+      .then(orders => this.setState({orders}))
+  }
+
   render() {
     return (
       <div className="App">
