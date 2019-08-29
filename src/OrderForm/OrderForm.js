@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../OrderForm/OrderForm.css'
 
 class OrderForm extends Component {
     constructor() {
@@ -18,12 +19,11 @@ class OrderForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         let newItem  = {
-            id: Date.now(),
-            key: Date.now() + 1,
-            imageURL: this.state.imageURL,
-            name: this.state.name,
-            description: this.state.description,
-            price: this.state.price
+            "id": Date.now(),
+            "img": this.state.imageURL,
+            "name": this.state.name,
+            "description": this.state.description,
+            "price": this.state.price
         }
         this.props.addItem(newItem)
         this.clearInputs()
@@ -39,7 +39,7 @@ class OrderForm extends Component {
 
     render() {
         return (
-            <div>
+            <form className="OrderForm">
                 <input
                 type="text"
                 placeholder="ImageURL:"
@@ -71,8 +71,8 @@ class OrderForm extends Component {
                 value={this.state.price}
                 onChange={this.handleChange}
                 />
-                <button>Add Purchase</button>
-            </div>
+                <button className="orderButton" onClick={event => this.handleSubmit(event)}>Add Purchase</button>
+            </form>
         )
     }
 }
