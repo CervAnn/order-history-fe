@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Container from '../Container/Container'
 import './App.css';
 
 class App extends Component {
@@ -10,11 +11,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/purchases')
-    .then(response => response.json())
-    .then(data => console.log(data))
+      fetch('http://localhost:3001/api/v1/purchases')
+      .then(response => response.json())
+      .then(orders => this.setState({orders}))
+      .catch(err => console.log(err))
   }
-
 
   render() {
     return (
@@ -26,7 +27,7 @@ class App extends Component {
           </div>
         </header>
         <div className='purchase-container'>
-
+          <Container orders={this.state.orders} />
         </div>
       </div>
     );
